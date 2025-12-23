@@ -1,12 +1,12 @@
-import axios from 'axios'
-import  { useContext } from 'react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-const Login = () => {
+import { login } from '../features/AuthSlice'
+import { useDispatch,useSelector } from 'react-redux'
 
-  // const {loginsubmit}=useContext(Authcontext)
+const Login = () => {
+    const dispatch = useDispatch()
+    const {user,status} = useSelector(state => state.user)
   const [form,setForm]=useState({
     email:'',
     password:''
@@ -18,7 +18,8 @@ const Login = () => {
   }
   const  handlesubmit=(e)=>{
     e.preventDefault()
-    // loginsubmit(form)
+    dispatch(login(form))
+
    
 
   

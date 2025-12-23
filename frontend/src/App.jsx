@@ -8,12 +8,14 @@ import Landing from './pages/Landing'
 import Employerhome from './pages/Employerhome'
 import Jobregister from './pages/Jobregister'
 import { Toaster } from 'react-hot-toast'
+import Navbar from './components/Navbar'
 
 const App = () => {
   
   return (
     <div>
       <Toaster/>
+      <Navbar/>
       <Routes>      
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
