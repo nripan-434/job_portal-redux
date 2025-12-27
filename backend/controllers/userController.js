@@ -47,6 +47,7 @@ export const loginuser = async(req,res)=>{
 
     }
     const currentuser= {
+        id:user._id,
         name:user.name,
         email:user.email,
         admin:user.admin,

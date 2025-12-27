@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { jobreg } from '../features/JobSlice'
 
 const Jobregister = () => {
+    const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [form, setForm] = useState({
         companyname: '',
@@ -16,11 +17,12 @@ const Jobregister = () => {
     const handleinput = (e) => {
         const { name, value } = e.target
         setForm((prev) => ({ ...prev, [name]: value }))
+        console.log(user)
         console.log(form)
     }
     const handlesubmit = async (e) => {
         e.preventDefault()
-        dispatch(jobreg(form))
+        dispatch(jobreg({ ...form, employer: user.id }))
         setForm({
             companyname: '',
             jobtitle: '',
@@ -29,8 +31,6 @@ const Jobregister = () => {
             jobdetails: '',
             jobtype: 'fulltime'
         })
-
-
     }
 
     return (

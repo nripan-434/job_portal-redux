@@ -9,6 +9,7 @@ import Employerhome from './pages/Employerhome'
 import Jobregister from './pages/Jobregister'
 import { Toaster } from 'react-hot-toast'
 import Navbar from './components/Navbar'
+import Applications from './pages/Applications'
 
 const App = () => {
   
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/admin' element={<Adminhome/>}/>
         <Route path='/employer' element={<Employerhome/>}/>
         <Route path='/jobregister' element={<Jobregister/>}/>
+        <Route path='/application' element={<Applications/>}/>
       </Routes>
     </div>
   )

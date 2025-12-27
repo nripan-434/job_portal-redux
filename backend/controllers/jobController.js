@@ -1,13 +1,13 @@
 import jobModel from "../models/jobModel.js";
 export const addjob = async (req, res) => {
-    const { companyname, jobdetails, location, jobtitle, salary, jobtype } = req.body
+    const { companyname, jobdetails, location, jobtitle, salary, jobtype,employer } = req.body
     try {
 
         if (!companyname || !jobtitle || !location || !jobdetails || !jobtype || !salary) {
             return res.json({ error: 'fill the fields' })
         }
         await jobModel.create({
-            companyname, jobtitle, location, jobdetails, jobtype, salary
+            companyname, jobtitle, location, jobdetails, jobtype, salary,employer
         })
         return res.json({ message: "job post added" })
     }
