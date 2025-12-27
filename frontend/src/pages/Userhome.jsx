@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CiSearch } from "react-icons/ci";
+import { useSelector, useDispatch } from 'react-redux';
+import { getalljob } from '../features/JobSlice';
+import JobCards from '../components/JobCards';
+const Userhome = () => {
+  const dispatch = useDispatch()
+  const { jobs } = useSelector((state) => state.job)
+  useEffect(() => {
+    dispatch(getalljob())
+  }, [])
 
-const Home = () => {
   return (
     <div className="min-h-screen w-full  bg-[#020617] relative ">
 
@@ -13,9 +21,9 @@ const Home = () => {
         <h3 className='    xl:w-200 w-80     text-amber-50 font-[impact] sm:text-2xl   md:w-200 leading-loose'>Trending Jobs Keywords: <span className='bg-[#020617]  p-1 rounded-md '>Web Designer</span> <span className='bg-[#020617]  p-1 rounded-md'>Web Developer</span> <span className='bg-[#020617]  p-1 rounded-md'>IOS Developer</span> <span className='bg-[#020617]  p-1 rounded-md' >Android Developer</span></h3>
         <div className='bg-[#020617] lg:w-100 w-64  md:p-1 rounded-md '>
           <form action="" className=' w-full  text-white border-white p-1 h-9 rounded flex justify-between   bg-transparent   '>
-          <input type="text" className=' bg-[#020617]     backdrop-blur-sm rounded outline-0' placeholder='search "job keywords"' />
-          <button ><CiSearch className='cursor-pointer text-3xl text-white' /></button>
-        </form>
+            <input type="text" className=' bg-[#020617]     backdrop-blur-sm rounded outline-0' placeholder='search "job keywords"' />
+            <button ><CiSearch className='cursor-pointer text-3xl text-white' /></button>
+          </form>
         </div>
       </div>
 
@@ -27,13 +35,11 @@ const Home = () => {
           <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl   rounded-r-xl text-white  w-25 md:w-40'>recent jobs</button>
         </div>
       </div>
-      {
-
-      }
+      <JobCards jobs={jobs}/>
 
     </div>
 
   )
 }
 
-export default Home
+export default Userhome

@@ -8,9 +8,7 @@ const Register = () => {
       name:'',
       email:'',
       password:'',
-      admin:false,
       type:'employer'
-      
     })
     const handleinput = (e)=>{
       const {name,value} = e.target
@@ -20,14 +18,11 @@ const Register = () => {
     const handlesubmit =  (e) =>{
       e.preventDefault();
       dispatch(reg(form))
-      
-
-
     }
+
+
   return (
     <div className="min-h-screen w-full  bg-[#020617] relative">
-  {/* Dark Sphere Grid Background */}
-  
   <div
     className="absolute inset-0 z-0 flex justify-center items-center ml-3"
     style={{

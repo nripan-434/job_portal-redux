@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const jobSchema = mongoose.Schema({
-    name:{
+    companyname:{
         type:String,
         required:true
     },
-    jobdetails:{
+    jobtitle:{
         type:String,
         required:true
     },
@@ -13,12 +13,8 @@ const jobSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    email:{
+    jobdetails:{
         type:String,
-        required:true
-    },
-    contact:{
-        type:Number,
         required:true
     },
     jobtype:{
@@ -30,6 +26,9 @@ const jobSchema = mongoose.Schema({
         required:true
     }
 
+},
+{
+    timestamps:true
 })
 
 const jobModel =mongoose.model('job',jobSchema)

@@ -22,6 +22,15 @@ const Jobregister = () => {
     const handlesubmit =async (e) => {
         e.preventDefault()
         dispatch(jobreg(form))
+        setForm({
+             name: '',
+        email: '',
+        location: '',
+        jobdetails: '',
+        contact: '',
+        salary: '',
+        jobtype: 'fulltime'
+        })
         
 
     }
