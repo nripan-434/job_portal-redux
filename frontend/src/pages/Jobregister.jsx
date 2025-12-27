@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { jobreg } from '../features/JobSlice'
 
 const Jobregister = () => {
-    // const {jobregister}=useContext(Authcontext)
+    const dispatch=useDispatch()
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -19,7 +21,7 @@ const Jobregister = () => {
     }
     const handlesubmit =async (e) => {
         e.preventDefault()
-        // jobregister(form)
+        dispatch(jobreg(form))
         
 
     }

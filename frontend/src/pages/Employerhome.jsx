@@ -6,24 +6,7 @@ import { CiSearch } from 'react-icons/ci'
 import React from 'react'
 
 const Employerhome = () => {
-    const [from, setForm] = useState({
-        name: '',
-        jobdetails: '',
-        location: '',
-        email: '',
-        contact: ''
-    })
-    const handleinput = (e) => {
-        const { name, value } = e.target
-        setForm((prev) => ({ ...prev, [name]: value }))
-        console.log(form)
-
-    }
-    const handlesubmit = async (e) => {
-        e.preventDefault()
-
-
-    }
+   
     return (
         
                 <div className="min-h-screen w-full  bg-[#020617] relative ">

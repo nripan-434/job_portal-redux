@@ -4,15 +4,15 @@ export const addjob = async (req, res) => {
     try {
 
         if (!name || !jobdetails || !location || !email || !contact || !salary || !jobtype) {
-            return res.json({ message: 'fill the fields' })
+            return res.json({ error: 'fill the fields' })
         }
         await jobModel.create({
             name, jobdetails, location, email, contact, salary, jobtype
         })
-        return res.json({ message: "job added" })
+        return res.json({ message: "job post added" })
     }
-    catch {
-        res.json({ message: "something went wrong", error })
+    catch (err){
+        res.json({ error: "something went wrong",err })
     }
 
 
