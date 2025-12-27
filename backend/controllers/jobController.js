@@ -7,7 +7,7 @@ export const addjob = async (req, res) => {
             return res.json({ error: 'fill the fields' })
         }
         await jobModel.create({
-            name, jobdetails, location, email, contact, salary, jobtype
+            companyname, jobtitle, location, jobdetails, jobtype, salary
         })
         return res.json({ message: "job post added" })
     }

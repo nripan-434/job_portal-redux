@@ -48,13 +48,10 @@ const Register = () => {
       <input type="text" className='outline-0 text-white' onChange={handleinput}  name='email' value={form.email} placeholder='enter your email'/>
       <input type="text" className='outline-0 text-white' onChange={handleinput}  name='password' value={form.password} placeholder='enter your password'/>
       <div className='flex gap-2 text-gray-400'>
-        <h1 >Register As:</h1>
-
-        
+        <label >Register As:</label>
       <select className='text-gray-300 outline-0 ' onChange={handleinput} name="type" id="">
         <option className='text-black ' value="employer">Employer</option>
         <option className='text-black' value="jobseeker">Job Seeker</option>
-
       </select>
       </div>
       <button type='submit'className='bg-white w-full p-2 rounded-xl text-black shadow w-40 '>Register</button>
