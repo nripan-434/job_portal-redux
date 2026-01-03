@@ -13,6 +13,7 @@ import Applications from './pages/user/Applications'
 import JobApplicantions from './pages/employer/JobApplicantions'
 import Applicants from './pages/employer/Applicants'
 import UserApplications from './pages/user/UserApplications'
+import Footer from './components/Footer'
 
 const App = () => {
   
@@ -33,6 +34,7 @@ const App = () => {
         <Route path='/applicants/:jobid' element={<Applicants/>}/>
         <Route path='/userapplications' element={<UserApplications/>}/>
       </Routes>
+      <Footer/>
     </div>
   )
 }
