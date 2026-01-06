@@ -23,7 +23,8 @@ const Applicants = () => {
   }, [jobid])
 
   return (
-    <div className='bg-[#020617] text-white pt-4  h-screen'>
+    <div className='bg-[#020617] text-white pt-4  flex-grow overflow-y-auto '>
+      
       {status === 'pending' ? <Spinner /> :
         applicants[0] == null ? <div className='flex justify-center pt-20'>no applicantions yet!</div> :
           <div className='flex flex-col gap-4'>

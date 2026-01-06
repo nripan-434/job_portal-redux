@@ -32,7 +32,7 @@ const Applications = () => {
   }
 
   return (
-    <div className='flex bg-[#020617] text-white  justify-center min-h-screen items-center'>
+    <div className='flex bg-[#020617] text-white  justify-center flex-grow overflow-y-auto p-8 items-center'>
       <div className='w-100 p-17 rounded-md border'>
         <form action="" onSubmit={handlesubmit} className='flex flex-col gap-10  '>
           <h1 className='font-[impact] text-4xl'>Application</h1>

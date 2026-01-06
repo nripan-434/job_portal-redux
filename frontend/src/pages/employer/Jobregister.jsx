@@ -38,12 +38,9 @@ const Jobregister = () => {
     }
 
     return (
-        <div className='flex bg-url[]  h-screen justify-center items-center bg-[#020617] text-white p-5'>
-            <div className='flex border rounded-xl '>
-                <div><img src="https://images.pexels.com/photos/16516/pexels-photo.jpg" className='h-full md:h-150 w-40 hover:w-60 duration-100 object-cover rounded-l-xl ' alt="" /></div>
-                <div className='flex flex-col'>
-                    <div className='flex-1 font-[impact] text-2xl justify-center items-center flex rounded-tr-xl border border-l-0 '> JOB REGISTRATION</div>
-                    <form action="" className='flex flex-5  justify-center  flex-col text-white gap-5 border border-t-0 border-l-0 rounded-br-xl  p-6 w-100' onSubmit={handlesubmit} >
+        <div className='flex flex-grow overflow-y-auto  justify-center items-center bg-[#020617] text-white p-5'>
+                   <div className='border'>
+                     <form action="" className='flex flex-5  justify-center  flex-col text-white gap-5  rounded-br-xl  p-6 w-100' onSubmit={handlesubmit} >
                         <input onChange={handleinput} className='outline-0' name='companyname' value={form.companyname} type="text" placeholder='Enter companyname' />
                         <input onChange={handleinput} className='outline-0' name='jobtitle' value={form.jobtitle} type="text" placeholder='Enter jobtitle' />
                         <input onChange={handleinput} className='outline-0' name='location' value={form.location} type="text" placeholder='Enter location' />
@@ -58,9 +55,8 @@ const Jobregister = () => {
                         </div>
                         <button type='submit' className='border rounded-lg p-3'>add jobpost </button>
                     </form>
+                   </div>
                 </div>
-            </div>
-        </div>
     )
 }
 

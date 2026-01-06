@@ -12,7 +12,7 @@ const Userhome = () => {
   }, [])
 
   return (
-    <div className="min-h-screen w-full  bg-[#020617] relative ">
+    <div className="flex-grow overflow-y-auto w-full  bg-[#020617] relative ">
 
 
 

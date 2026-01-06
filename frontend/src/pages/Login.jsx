@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
+import { motion } from 'framer-motion'
 import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../features/AuthSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -39,8 +39,12 @@ const Login = () => {
 
 
   return (
-    <div className='h-screen  flex justify-center items-center bg-[#020617] '>
-      <div className='flex justify-center  items-center '>
+    <div className='flex-grow overflow-y-auto p-8 flex justify-center items-center bg-[#020617] '>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className='flex justify-center  items-center '>
         <div className='w-100 h-100 flex flex-col justify-center text-white border backdrop-blur-2xl shadow-xl  p-6 rounded-xl'>
           <div className='flex justify-center'>
             <h1 className='text-[50px] font-[impact] mb-5 border-b'>Login</h1>
@@ -55,7 +59,7 @@ const Login = () => {
             </div>
           </form>
         </div>
-      </div>
+      </motion.div>
     </div>
 
   )

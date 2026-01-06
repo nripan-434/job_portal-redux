@@ -19,10 +19,11 @@ import Reapply from './pages/user/Reapply'
 const App = () => {
   
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Toaster/>
       <Navbar/>
-      <Routes>      
+
+        <Routes >      
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/home' element={<Userhome/>}/>
@@ -36,6 +37,8 @@ const App = () => {
         <Route path='/userapplications' element={<UserApplications/>}/>
         <Route path='/reapply/:appid/:jobid' element={<Reapply/>}/>
       </Routes>
+    
+      
       <Footer/>
     </div>
   )

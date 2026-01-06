@@ -15,7 +15,7 @@ const UserApplications = () => {
         }
     }, [user])
     return (
-        <div className='min-h-screen bg-[#020617]  p-4 flex flex-col gap-4 text-white' >
+        <div className='flex-grow overflow-y-auto  bg-[#020617]  p-4 flex flex-col gap-4 text-white' >
             {
                 userapplies[0]==null?<h1 className='flex justify-center'>apply for roles</h1>:
                 status === 'pending' ? <Spinner /> :

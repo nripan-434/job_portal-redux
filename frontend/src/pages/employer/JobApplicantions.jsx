@@ -15,7 +15,7 @@ const JobApplicantions = () => {
         console.log(user)
     },[])    
     return (
-        <div className='flex flex-col gap-3 p-4 pt-5 bg-[#020617] min-h-screen'>
+        <div className='flex flex-col gap-3 p-4 pt-5 bg-[#020617] flex-grow overflow-y-auto'>
             {
                 jobapplications[0]==null?<h1 className='flex text-white justify-center'>no applications yet!</h1>:
                 status==='pending'?<Spinner/>:
