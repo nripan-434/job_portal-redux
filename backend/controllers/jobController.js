@@ -32,6 +32,9 @@ export const getalljobs = async (req, res) => {
 
 export const jobsearch = async (req, res) => {
     const { search } = req.query
+    if(search===''){
+       return res.json({error:'enter a keyword'})
+    }
     const jobs = await jobModel.find({
         $or: [
             { companyname: { $regex: search, $options: "i" } },

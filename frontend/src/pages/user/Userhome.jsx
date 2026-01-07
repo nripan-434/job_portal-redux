@@ -5,9 +5,11 @@ import { clearjobsearch, getalljob, jobsearch } from '../../features/JobSlice';
 import JobCards from '../../components/JobCards';
 import { Link } from 'react-router-dom';
 import { IoMdClose } from "react-icons/io";
+import Spinner from '../../components/Spinner';
+import { FaSpinner } from 'react-icons/fa6';
 const Userhome = () => {
   const dispatch = useDispatch()
-  const { jobs,jobsearchs } = useSelector((state) => state.job)
+  const { jobs,jobsearchs,status } = useSelector((state) => state.job)
   const [search,setSearch]=useState('')
   useEffect(() => {
     dispatch(getalljob())
@@ -32,17 +34,31 @@ const Userhome = () => {
         <h3 className='    xl:w-200 w-full    text-amber-50 font-[impact] sm:text-2xl   md:w-200 leading-loose'>Trending Jobs Keywords: <span className='bg-[#020617]  p-1 rounded-md '>Web Designer</span> <span className='bg-[#020617]  p-1 rounded-md'>Web Developer</span> <span className='bg-[#020617]  p-1 rounded-md'>IOS Developer</span> <span className='bg-[#020617]  p-1 rounded-md' >Android Developer</span></h3>
         <div className='bg-[#020617] lg:w-100 w-64  md:p-1 rounded-md  '>
           <form action="" onSubmit={handlesubmit}  className=' w-full  text-white border-white p-1 h-9 rounded flex justify-between items-center  bg-transparent   '>
-            <input type="text" onChange={handleinput} value={search.value} className=' bg-[#020617]     backdrop-blur-sm rounded outline-0' placeholder='search "job keywords"' />
-            {search?<button onClick={()=>{setSearch(null)
+            <input type="text" onChange={handleinput} value={search}  className=' bg-[#020617]     backdrop-blur-sm rounded outline-0' placeholder='search "job keywords"' />
+            {search?<button type='button' onClick={()=>{setSearch('')
               dispatch(clearjobsearch())
             }}><IoMdClose  className='text-2xl' /></button>:''}
+            {
+              status==='pending'?<FaSpinner className='animate-spin'/>:
               <button type='submit' ><CiSearch className='cursor-pointer text-3xl text-white' /></button>
+
+            }
           </form>
         </div>
       </div>
 
-      <div className='border-b text-white'>
+      <div className='border-b text-white'>{
+        status==='pending'?<Spinner/>:
+        jobsearchs==null ?
+        <h1 className='p-3 flex justify-center'>No job results found on "{search}"</h1>
+        
+        :jobsearchs[0]==null?'':
+        <>
+        <h1 className=' underline text-[25px] p-3'>results on <span className='text-blue-500 italic'>"{search}"</span></h1>        
         <JobCards jobs={jobsearchs} />
+        </>
+        
+        }
       </div>
 
       <div className='flex justify-center backdrop-blur-2xl p-4  bg-black'>

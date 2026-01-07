@@ -82,6 +82,9 @@ const JobSlice = createSlice({
             })
             .addCase(jobsearch.fulfilled,(state,action)=>{
                 state.status='success'
+                if(action.payload.error){
+                 toast.error(action.payload.error)
+                }
                 state.jobsearchs=action.payload.jobs
             })
             .addCase(jobsearch.rejected,(state)=>{
