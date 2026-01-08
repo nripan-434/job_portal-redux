@@ -7,6 +7,8 @@ const State = {
     jobs: JSON.parse(localStorage.getItem('jobs')) || [],
     jobapplications:[],
     jobsearchs:[],
+    searchword:null,
+    emptyres:null,
     status: 'success'
 }
 
@@ -42,7 +44,9 @@ const JobSlice = createSlice({
     initialState: State,
     reducers: {
         clearjobsearch:(state)=>{
-            state.jobsearchs=[]
+            state.jobsearchs=[],
+            state.emptyres=null,
+            state.searchword=null
         }
 
     },
@@ -82,6 +86,11 @@ const JobSlice = createSlice({
             })
             .addCase(jobsearch.fulfilled,(state,action)=>{
                 state.status='success'
+                
+                state.searchword=action.payload.search
+                if(action.payload.emptyres){
+                    state.emptyres=action.payload.emptyres
+                }
                 if(action.payload.error){
                  toast.error(action.payload.error)
                 }

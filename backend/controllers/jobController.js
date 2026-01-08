@@ -42,9 +42,9 @@ export const jobsearch = async (req, res) => {
             { location: { $regex: search, $options: "i" } }
         ]
     })
-    if (!jobs) {
-        return res.json({ error: "no jobs found!" })
+    if (jobs.length === 0) {
+        return res.json({emptyres:search })
     }
-    return res.json({ jobs })
+    return res.json({ jobs, search })
 }
 
