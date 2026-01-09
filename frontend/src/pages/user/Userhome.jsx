@@ -26,7 +26,7 @@ const Userhome = () => {
   }
 
   return (
-    <div className="flex-grow overflow-y-auto w-full  bg-[#020617] relative ">
+    <div className="flex-grow overflow-y-auto w-full  bg-[#020617]  ">
       <div className=' p-10 lg:pl-6 gap-3 flex flex-col lg:pt-40 lg:justify-start justify-center h-100 sm:h-90 md:h-120 lg:h-150 bg-cover bg-bottom bg-[url(https://images.pexels.com/photos/3756681/pexels-photo-3756681.jpeg)]'>
         <h1 className=' rounded-xl   text-[#020617]      font-[impact] md:text-5xl sm:text-3xl text-2xl  md:w-100  lg:w-full '>Search Between More Then <span className='text-gray-100'>50,000</span> Open Jobs.</h1>
         <h3 className='    xl:w-200 w-full    text-amber-50 font-[impact] sm:text-2xl   md:w-200 leading-loose'>Trending Jobs Keywords: <span className='bg-[#020617]  p-1 rounded-md '>Web Designer</span> <span className='bg-[#020617]  p-1 rounded-md'>Web Developer</span> <span className='bg-[#020617]  p-1 rounded-md'>IOS Developer</span> <span className='bg-[#020617]  p-1 rounded-md' >Android Developer</span></h3>
