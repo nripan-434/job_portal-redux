@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { logout } from '../features/AuthSlice'
@@ -8,6 +8,11 @@ const Navbar = () => {
   const navigate = useNavigate()
   const { user } = useSelector(state => state.auth)
   const [menu, setMenu] = useState(false)
+  useEffect(() => {
+  if (!user) {
+    navigate('/')
+  }
+}, [user, navigate])
   const dispatch = useDispatch()
   return (
     <div className='h-20    bg-[#020617] '>
@@ -45,7 +50,6 @@ const Navbar = () => {
                           <Link>about</Link>
                           <button onClick={() => {
                             dispatch(logout())
-                            navigate('/')
                           }}>logout</button>
 
                         </div></> : user.type == 'jobseeker' ? <><div className='flex gap-3'>
@@ -53,8 +57,8 @@ const Navbar = () => {
                             <Link to={'/home'}>userhome</Link>
                             <Link>about</Link>
                             <button onClick={() => {
-                              dispatch(logout())
-                              navigate('/')
+                            dispatch(logout())
+
                             }}>logout</button>
                           </div>
                         </div></> : <><div className='flex gap-3'>
@@ -62,8 +66,8 @@ const Navbar = () => {
                             <Link>employerhome</Link>
                             <Link>about</Link>
                             <button onClick={() => {
-                              dispatch(logout())
-                              navigate('/')
+                            dispatch(logout())
+
                             }}>logout</button>
                           </div>
                         </div></>
@@ -92,8 +96,7 @@ const Navbar = () => {
                           <Link className='hover:bg-white active:scale-95 duration-300 hover:text-black p-4'>adminhome</Link>
                           <Link className='hover:bg-white duration-300 hover:text-black p-4'>about</Link>
                           <Link className='cursor-pointer hover:bg-red-700 duration-300 hover:text-white p-4' onClick={() => {
-                            dispatch(logout())
-                            navigate('/')
+                            setMenu(false)
                           }}>logout</Link>
 
                         </div></> : user.type == 'jobseeker' ? <>
@@ -102,16 +105,18 @@ const Navbar = () => {
                             <Link to={'/home'} className='hover:bg-white duration-300  hover:text-black p-4'>userhome</Link>
                             <Link className='hover:bg-white duration-300   hover:text-black p-4'>about</Link>
                             <Link className='cursor-pointer hover:bg-red-700 duration-300  hover:text-white p-4' onClick={() => {
-                              dispatch(logout())
-                              navigate('/')
+                              setMenu(false)
+                            dispatch(logout())
+
                             }}>logout</Link>
                         </div></> : <>
                           <div className='flex flex-col'  >
                             <Link className='hover:bg-white duration-300 hover:text-black p-4'>employerhome</Link>
                             <Link className='hover:bg-white duration-300 hover:text-black p-4'>about</Link>
                             <Link className='cursor-pointer hover:bg-red-700 duration-300 hover:text-white p-4' onClick={() => {
-                              dispatch(logout())
-                              navigate('/')
+                              setMenu(false)
+                            dispatch(logout())
+
                             }}>logout</Link>
                           </div>
                         </>

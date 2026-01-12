@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 const State = {
     jobs: JSON.parse(localStorage.getItem('jobs')) || [],
+    latestjobs:[],
     jobapplications:[],
     jobsearchs:[],
     searchword:null,
@@ -28,6 +29,12 @@ export const getalljob = createAsyncThunk('get/getalljob', async () => {
         console.log("no res")
     }
     return res.data.jobs
+
+})
+export const getlatestjob = createAsyncThunk('get/getlatestjob', async () => {
+    const res = await axios.get('http://localhost:5000/job/getlatestjob')
+    
+    return res.data.latestjobs
 
 })
 export const getjobapplications = createAsyncThunk('get/getjobapplications',async(userid)=>{
@@ -99,6 +106,16 @@ const JobSlice = createSlice({
             .addCase(jobsearch.rejected,(state)=>{
                 state.status='rejected'
             })  
+            .addCase(getlatestjob.pending,(state)=>{
+                state.status='pending'
+            })
+            .addCase(getlatestjob.fulfilled,(state,action)=>{
+                state.status='success'
+                state.latestjobs=action.payload
+            })
+            .addCase(getlatestjob.rejected,(state)=>{
+                state.status='rejected'
+            }) 
     }
 })
 export const {clearjobsearch} = JobSlice.actions

@@ -29,6 +29,10 @@ export const getalljobs = async (req, res) => {
     const jobs = await jobModel.find()
     res.json({ jobs })
 }
+export const getlatestjob = async (req, res) => {
+    const latestjobs = await jobModel.find().sort({createdAt:-1})
+    res.json({ latestjobs })
+}
 
 export const jobsearch = async (req, res) => {
     const { search } = req.query

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { useSelector, useDispatch } from 'react-redux';
-import { clearjobsearch, getalljob, jobsearch } from '../../features/JobSlice';
+import { clearjobsearch, getalljob, jobsearch ,getlatestjob} from '../../features/JobSlice';
 import JobCards from '../../components/JobCards';
 import { Link } from 'react-router-dom';
 import { IoMdClose } from "react-icons/io";
@@ -9,7 +9,8 @@ import Spinner from '../../components/Spinner';
 import { FaSpinner } from 'react-icons/fa6';
 const Userhome = () => {
   const dispatch = useDispatch()
-  const { jobs, jobsearchs, status, searchword, emptyres } = useSelector((state) => state.job)
+  const { jobs, jobsearchs,latestjobs, status, searchword, emptyres } = useSelector((state) => state.job)
+  const [option,setOption]=useState('alljobs')
   const [search, setSearch] = useState('')
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const Userhome = () => {
             }}><IoMdClose className='text-2xl' /></button> : ''}
 
             {
-              status === 'pending' ? <FaSpinner className='animate-spin' /> :
+              status === 'pending' ? '' :
                 <button type='submit' ><CiSearch className='cursor-pointer text-3xl text-white' /></button>
             }
             </div>
@@ -60,12 +61,22 @@ const Userhome = () => {
 
       <div className='flex justify-center backdrop-blur-2xl p-4  bg-black'>
         <div className='  justify-center bg-white p-2 mt-4 md:w-90  rounded flex  '>
-          <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl rounded-l-xl  text-white w-25 md:w-40'>latest</button>
-          <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl    text-white  w-25 md:w-60'>recent jobs</button>
+          <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl rounded-l-xl  text-white w-25 md:w-40'onClick={()=>{ dispatch(getalljob())
+             setOption('alljobs')}} >Posted Jobs</button>
+          <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl    text-white  w-25 md:w-60' onClick={()=>{ dispatch(getlatestjob())
+            setOption('lastest')
+          }}>latest jobs</button>
           <Link className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl   rounded-r-xl text-white  w-35 md:w-80' to={'/userapplications'} >My Applications</Link>
         </div>
       </div>
-      <JobCards jobs={jobs} />
+      { 
+      option=='alljobs'?
+      <JobCards jobs={jobs} />:
+      option=='lastest'&& latestjobs.length>0?
+      <JobCards jobs={latestjobs}/>:''
+      }
+
+      
 
     </div>
 
