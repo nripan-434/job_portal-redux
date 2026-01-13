@@ -32,6 +32,7 @@ const ApplictionSchema = mongoose.Schema({
         enum:['pending','accepted','rejected','withdraw'],
         default:'pending',
     },
+     
 
 } ,{timestamps:true});
 

@@ -28,7 +28,7 @@ const Landing = () => {
   }
   return (
     <div className='text-white  bg-[#020617]  flex-grow overflow-y-auto'> 
-      <div className=' flex flex-col justify-center  '>
+      <div className=' flex p-4 flex-col justify-center  '>
         <div className=' justify-between'>
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -42,18 +42,7 @@ const Landing = () => {
           </motion.div>
            
          </div>
-         <div className='flex flex-col p-5 justify-center text-black  bg-gray-300  sm:flex-col overflow-hidden p-4  mb-10'>
-            <div className='font-[impact] underline mb-3 text-3xl   flex gap-1 items-center justify-center'><span className='text-gray-500'>Secure</span> Your <span className='text-gray-500'> Career</span></div>
-            <div className='h-2 bg-black w-full'></div>
-
-           <div className='relative m-6 h-95  group sm:h-110 xl:left-70'>
-             <div className='overflow-hidden absolute duration-300 group-hover:blur hover:shadow-2xl hover:!blur-none active:scale-95 hover:z-40 hover:scale-103   h-35 sm:left-30  sm:h-50 left-15 md:left-45 '><img className='rounded-xl object-cover h-full w-full' src="https://images.pexels.com/photos/9841334/pexels-photo-9841334.jpeg" alt="" /></div>
-            <div className=' overflow-hidden absolute duration-300 active:scale-95 hover:z-40 hover:shadow-2xl hover:scale-103 group-hover:blur-sm hover:!blur-none h-35 sm:left-50 sm:h-50 left-25 top-30 md:left-75'><img className='object-cover h-full w-full rounded-xl' src="https://images.pexels.com/photos/18848929/pexels-photo-18848929.jpeg" alt="" /></div>
-            <div className=' overflow-hidden absolute transition-all duration-300  group-hover:blur-sm hover:shadow-2xl  hover:!blur-none duration-300 active:scale-95 hover:z-40 hover:scale-103 h-35 sm:h-50 left-35 sm:left-70 top-60 md:left-105 '><img className=' object-cover h-full w-full rounded-xl' src="https://images.pexels.com/photos/5439153/pexels-photo-5439153.jpeg" alt="" /></div>
-           </div>
-            <div className='h-2 bg-black w-full'></div>
-
-          </div>
+         
         <div className='flex justify-center '>
           <motion.div
             initial={{ y: 50, opacity: 0 }}
@@ -94,6 +83,18 @@ const Landing = () => {
         <LandingJobcards jobs={jobs} />
           
       </div >
+      <div className='flex flex-col p-5 justify-center text-black    sm:flex-col overflow-hidden p-4  mb-10'>
+            <div className='font-[impact] underline mb-3 text-3xl   flex gap-1 items-center justify-center'><span className='text-white'>Secure</span> <span className='text-gray-300'>Your</span>  <span className='text-white'> Career</span></div>
+            <div className='h-2 bg-white w-full'></div>
+
+           <div className='relative m-6 h-95  group sm:h-110 xl:left-70'>
+             <div className='overflow-hidden absolute duration-300 group-hover:blur hover:shadow-2xl hover:!blur-none active:scale-95 hover:z-40 hover:scale-103   h-35 sm:left-30  sm:h-50 left-15 md:left-45 '><img className='rounded-xl object-cover h-full w-full' src="https://images.pexels.com/photos/9841334/pexels-photo-9841334.jpeg" alt="" /></div>
+            <div className=' overflow-hidden absolute duration-300 active:scale-95 hover:z-40 hover:shadow-2xl hover:scale-103 group-hover:blur-sm hover:!blur-none h-35 sm:left-50 sm:h-50 left-25 top-30 md:left-75'><img className='object-cover h-full w-full rounded-xl' src="https://images.pexels.com/photos/18848929/pexels-photo-18848929.jpeg" alt="" /></div>
+            <div className=' overflow-hidden absolute transition-all duration-300  group-hover:blur-sm hover:shadow-2xl  hover:!blur-none duration-300 active:scale-95 hover:z-40 hover:scale-103 h-35 sm:h-50 left-35 sm:left-70 top-60 md:left-105 '><img className=' object-cover h-full w-full rounded-xl' src="https://images.pexels.com/photos/5439153/pexels-photo-5439153.jpeg" alt="" /></div>
+           </div>
+            <div className='h-2 bg-white w-full'></div>
+
+          </div>
     </div>
 
   )

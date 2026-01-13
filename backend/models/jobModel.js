@@ -29,7 +29,13 @@ const jobSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Users",
         required:true
+    },
+    bookmark:{
+        type:Boolean,
+        default:false,
+        required:true   
     }
+   
 },
 {
     timestamps:true

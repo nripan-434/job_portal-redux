@@ -13,7 +13,7 @@ const Jobregister = () => {
         salary: '',
         jobdetails: '',
         jobtype: 'fulltime',
-        employer:user.id
+        employer:user?user.id:''
 
     })
     const handleinput = (e) => {

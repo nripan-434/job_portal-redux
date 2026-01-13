@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getjobapplications } from '../../features/JobSlice';
+import { getjobapplications, removejob } from '../../features/JobSlice';
 import Spinner from '../../components/Spinner';
  
 
@@ -12,7 +12,6 @@ const JobApplicantions = () => {
     const {jobapplications,status}=useSelector((state)=>state.job);
     useEffect(()=>{
         dispatch(getjobapplications(user.id))
-        console.log(user)
     },[])    
     return (
         <div className='flex flex-col gap-3 p-4 pt-5 bg-[#020617] flex-grow overflow-y-auto'>
@@ -30,8 +29,14 @@ const JobApplicantions = () => {
                             <h2>{x.salary}</h2>
 
                         </div>
-                        <div className='flex justify-center items-center'>
-                            <Link className='bg-gray-500 p-1 rounded-md active:scale-95' to={`/applicants/${x._id}`}>Applications</Link>
+                        <div className='flex gap-3 justify-center items-center'>
+                            <Link className='bg-red-700 rounded-md p-1 active:scale-95' onClick={async()=>{ 
+                                await dispatch(removejob(x._id)) 
+        dispatch(getjobapplications(user.id))
+
+                            }}>remove job</Link>
+
+                                <Link className='bg-gray-500 p-1 rounded-md active:scale-95' to={`/applicants/${x._id}`}>Applications</Link>
                             
                         </div>
 

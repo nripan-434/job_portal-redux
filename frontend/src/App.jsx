@@ -15,7 +15,8 @@ import Applicants from './pages/employer/Applicants'
 import UserApplications from './pages/user/UserApplications'
 import Footer from './components/Footer'
 import Reapply from './pages/user/Reapply'
-
+import { Userprotected } from './components/userProtected'
+import { Jobproviderprotected } from './components/Jobproviderprotected'
 const App = () => {
   
   return (
@@ -26,10 +27,10 @@ const App = () => {
         <Routes >      
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/home' element={<Userhome/>}/>
+        <Route path='/home' element={<Userprotected><Userhome/></Userprotected> }/>
         <Route path='/' element={<Landing/>}/>
         <Route path='/admin' element={<Adminhome/>}/>
-        <Route path='/employer' element={<Employerhome/>}/>
+        <Route path='/employer' element={<Jobproviderprotected><Employerhome/></Jobproviderprotected>}/>
         <Route path='/jobregister' element={<Jobregister/>}/>
         <Route path='/application/:jobid' element={<Applications/>}/>
         <Route path='/jobapplicantions' element={<JobApplicantions/>}/>

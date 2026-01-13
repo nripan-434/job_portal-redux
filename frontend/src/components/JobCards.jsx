@@ -1,10 +1,15 @@
 
 import { FaRegBookmark } from "react-icons/fa6";
 import React from 'react'
+import { FaBookmark } from "react-icons/fa6";
 import { Link, useNavigate } from 'react-router-dom'
-
+import { useDispatch, useSelector } from "react-redux";
+import { addtobookmark, getalljob, removebookmark } from "../features/JobSlice";
 const JobCards = ({jobs}) => {
+  const {user}=useSelector((state)=>(state.auth))
     const navigate = useNavigate()
+
+    const dispatch=useDispatch()
   return (
     <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4  '>
       {
@@ -12,7 +17,14 @@ const JobCards = ({jobs}) => {
           return <div className='flex  flex-col gap-3 group hover:-translate-y-3 bg-[#d4d4d4] hover:bg-white duration-200 text-black rounded-sm m-3 overflow-hidden border' key={x._id}>
             <div className="flex items-center justify-between pr-3">
             <h1 className=' font-[impact] text-[30px]  pl-3 pt-3  group-hover:underline duration-300 group-hover:translate-x-2'>{x.companyname}</h1>
-            <FaRegBookmark className="hover:cursor-pointer text-2xl" />
+            {
+              x.bookmark?<FaBookmark className="hover:cursor-pointer text-2xl" onClick={()=>{dispatch(removebookmark({jobid:x._id}))
+            dispatch(getalljob())}} />: <FaRegBookmark onClick={()=>{dispatch(
+              addtobookmark({jobid:x._id}))
+              dispatch(getalljob())
+            }} className="hover:cursor-pointer text-2xl" />
+            }
+           
             </div>
             <div className='p-2 flex flex-col gap-2'>
                 <h2>Job role :{x.jobtitle}</h2>

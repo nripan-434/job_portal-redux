@@ -60,21 +60,24 @@ const Userhome = () => {
       </div>
 
       <div className='flex justify-center backdrop-blur-2xl p-4  bg-black'>
-        <div className='  justify-center bg-white p-2 mt-4 md:w-90  rounded flex  '>
-          <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl rounded-l-xl  text-white w-25 md:w-40'onClick={()=>{ dispatch(getalljob())
+        <div className='  justify-center bg-white p-2 mt-4 md:w-120  rounded flex  '>
+
+          <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl rounded-l-xl  text-white w-25 md:w-50 'onClick={()=>{ dispatch(getalljob())
              setOption('alljobs')}} >Posted Jobs</button>
-          <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl    text-white  w-25 md:w-60' onClick={()=>{ dispatch(getlatestjob())
+          <button className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl    text-white  w-25 md:w-50' onClick={()=>{ dispatch(getlatestjob())
             setOption('lastest')
           }}>latest jobs</button>
-          <Link className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl   rounded-r-xl text-white  w-35 md:w-80' to={'/userapplications'} >My Applications</Link>
+          <Link className='bg-black md:p-4 p-2 hover:bg-gray-600 duration-100 shadow-xl   rounded-r-xl text-white  w-35  md:w-50' to={'/userapplications'} >My Applications</Link>
         </div>
       </div>
+      <div className='p-5'>
       { 
       option=='alljobs'?
       <JobCards jobs={jobs} />:
       option=='lastest'&& latestjobs.length>0?
       <JobCards jobs={latestjobs}/>:''
       }
+      </div>
 
       
 

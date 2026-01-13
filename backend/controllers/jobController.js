@@ -52,3 +52,36 @@ export const jobsearch = async (req, res) => {
     return res.json({ jobs, search })
 }
 
+export const addtobookmark=async(req,res)=>{
+    const {jobid}=req.params
+    const marked = await jobModel.findOneAndUpdate({_id:jobid},{$set:{bookmark:true}},{new:true})
+    if(marked){
+    return res.json({message:"added to bookmark"})
+    }
+    else{
+    return res.json({error:"something went wrong"})
+
+    }
+
+}
+export const removejob=async(req,res)=>{
+    const {jobid} = req.params
+    const deleted = await jobModel.findByIdAndDelete({_id:jobid})
+    if(deleted){
+        return res.json({message:'job removed'})
+    }
+    else{
+        return res.json({error:'something went wrong'})
+    }
+}
+export const removebookmark=async(req,res)=>{
+    const {jobid}=req.params
+    const marked = await jobModel.findOneAndUpdate({_id:jobid},{$set:{bookmark:false}},{new:true})
+    if(marked){
+    return res.json({message:"removed from bookmark"})
+    }
+    else{
+    return res.json({error:"something went wrong"})
+
+    }
+}

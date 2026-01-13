@@ -118,13 +118,13 @@ const ApplicationSlice = createSlice({
                 toast.success(action.payload.message)
             }
             else if(action.payload.error){
-                toast.success(action.payload.error)
+                toast.error(action.payload.error)
             }
         })
         builder.addCase(reapply.rejected,(state)=>{
             state.status='rejected'
         })
-    
+        
     }
 
 })
