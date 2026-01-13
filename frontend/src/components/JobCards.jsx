@@ -18,9 +18,10 @@ const JobCards = ({jobs}) => {
             <div className="flex items-center justify-between pr-3">
             <h1 className=' font-[impact] text-[30px]  pl-3 pt-3  group-hover:underline duration-300 group-hover:translate-x-2'>{x.companyname}</h1>
             {
-              x.bookmark?<FaBookmark className="hover:cursor-pointer text-2xl" onClick={()=>{dispatch(removebookmark({jobid:x._id}))
-            dispatch(getalljob())}} />: <FaRegBookmark onClick={()=>{dispatch(
-              addtobookmark({jobid:x._id}))
+              x.bookmark?<FaBookmark className="hover:cursor-pointer text-2xl" onClick={async()=>{
+                await dispatch(removebookmark({jobid:x._id}))
+            dispatch(getalljob())}} />: <FaRegBookmark onClick={async()=>{
+              await dispatch(addtobookmark({jobid:x._id}))
               dispatch(getalljob())
             }} className="hover:cursor-pointer text-2xl" />
             }

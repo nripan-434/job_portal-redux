@@ -17,6 +17,7 @@ import Footer from './components/Footer'
 import Reapply from './pages/user/Reapply'
 import { Userprotected } from './components/userProtected'
 import { Jobproviderprotected } from './components/Jobproviderprotected'
+import Bookmarks from './pages/user/Bookmarks'
 const App = () => {
   
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='/' element={<Landing/>}/>
         <Route path='/admin' element={<Adminhome/>}/>
         <Route path='/employer' element={<Jobproviderprotected><Employerhome/></Jobproviderprotected>}/>
+        <Route path='/bookmarks' element={<Bookmarks/>}/>
         <Route path='/jobregister' element={<Jobregister/>}/>
         <Route path='/application/:jobid' element={<Applications/>}/>
         <Route path='/jobapplicantions' element={<JobApplicantions/>}/>

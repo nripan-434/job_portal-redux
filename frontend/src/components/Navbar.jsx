@@ -56,6 +56,7 @@ const Navbar = () => {
                           <div className='flex gap-3'>
                             <Link to={'/home'}>userhome</Link>
                             <Link>about</Link>
+                            <Link to={'/bookmarks'}>bookmarks</Link>
                             <button onClick={() => {
                             dispatch(logout())
 

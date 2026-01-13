@@ -29,6 +29,10 @@ export const getalljobs = async (req, res) => {
     const jobs = await jobModel.find()
     res.json({ jobs })
 }
+export const getallbookmarks = async (req, res) => {
+    const bookmarkjobs = await jobModel.find({bookmark:true})
+    res.json({ bookmarkjobs })
+}
 export const getlatestjob = async (req, res) => {
     const latestjobs = await jobModel.find().sort({createdAt:-1})
     res.json({ latestjobs })
@@ -85,3 +89,4 @@ export const removebookmark=async(req,res)=>{
 
     }
 }
+

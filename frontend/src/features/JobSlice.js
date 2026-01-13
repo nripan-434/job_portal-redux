@@ -8,6 +8,7 @@ const State = {
     latestjobs: [],
     jobapplications: [],
     jobsearchs: [],
+    bookmarks:[],
     searchword: null,
     emptyres: null,
     status: 'success'
@@ -19,10 +20,12 @@ export const jobreg = createAsyncThunk('post/jobreg', async (form) => {
 })
 export const getalljob = createAsyncThunk('get/getalljob', async () => {
     const res = await axios.get('http://localhost:5000/job/getalljobs')
-    if (!res) {
-        console.log("no res")
-    }
     return res.data.jobs
+
+})
+export const getallbookmarks = createAsyncThunk('get/getallbookmarks', async () => {
+    const res = await axios.get('http://localhost:5000/job/getallbookmarks')
+    return res.data.bookmarkjobs
 
 })
 export const getlatestjob = createAsyncThunk('get/getlatestjob', async () => {
@@ -92,6 +95,16 @@ const JobSlice = createSlice({
             .addCase(getalljob.rejected, (state) => {
                 state.status = 'rejected'
             })
+             .addCase(getallbookmarks.pending, (state) => {
+                state.status = 'pending'
+            })
+            .addCase(getallbookmarks.fulfilled, (state, action) => {
+                state.status = 'success'
+                state.bookmarks = action.payload
+            })
+            .addCase(getallbookmarks.rejected, (state) => {
+                state.status = 'rejected'
+            })
             .addCase(getjobapplications.pending, (state) => {
                 state.status = 'pending'
             })
@@ -158,6 +171,21 @@ const JobSlice = createSlice({
             }
         })
         builder.addCase(removejob.rejected, (state) => {
+            state.status = 'rejected'
+        })
+        builder.addCase(removebookmark.pending, (state) => {
+            state.status = 'pending'
+        })
+        builder.addCase(removebookmark.fulfilled, (state, action) => {
+            state.status = 'success'
+            if (action.payload.message) {
+                toast.success(action.payload.message)
+            }
+            else if (action.payload.error) {
+                toast.error(action.payload.error)
+            }
+        })
+        builder.addCase(removebookmark.rejected, (state) => {
             state.status = 'rejected'
         })
 
