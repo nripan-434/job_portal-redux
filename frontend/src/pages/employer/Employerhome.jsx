@@ -6,7 +6,7 @@ import { FaUsersRectangle } from "react-icons/fa6";
 const Employerhome = () => {
   return (
     
-    <div className=" flex-grow overflow-y-auto bg-[#020617]  ">
+    <div className=" flex-grow  min-h-[calc(100vh-5rem)] bg-[#020617]  ">
       <div className=' p-10 lg:pl-6 gap-3 flex flex-col lg:pt-40 lg:justify-start justify-center h-auto bg-cover bg-[url(https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg)]'>
         <h1 className=' rounded-xl   text-[#020617] lg:backdrop-blur-none md:backdrop-blur-sm     font-[impact] md:text-5xl sm:text-3xl   md:w-100  lg:w-full '>Search Between More Then <span className='text-gray-100'>50,000</span> Open Jobs.</h1>
         <h3 className='    xl:w-200 w-80     text-amber-50 font-[impact] sm:text-2xl   md:w-200 leading-loose'>Trending Jobs Keywords: <span className='bg-[#020617]  p-1 rounded-md '>Web Designer</span> <span className='bg-[#020617]  p-1 rounded-md'>Web Developer</span> <span className='bg-[#020617]  p-1 rounded-md'>IOS Developer</span> <span className='bg-[#020617]  p-1 rounded-md' >Android Developer</span></h3>

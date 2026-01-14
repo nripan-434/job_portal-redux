@@ -9,10 +9,16 @@ const Bookmarks = () => {
     useEffect(()=>{
         dispatch(getallbookmarks())
         console.log(bookmarks)
-    },[])
+    },[bookmarks])
   return (
-    <div className='bg-[#020617] h-screen'>
-      <JobCards jobs={bookmarks}/>
+    <div className='bg-[#020617] text-white h-screen'>
+      {
+       bookmarks.length>0? 
+      <JobCards jobs={bookmarks} joblist={getallbookmarks}/>:
+      <div className='flex justify-center mt-8' >No bookmarks yet!</div>
+
+
+      }
     </div>
   )
 }

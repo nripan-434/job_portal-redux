@@ -17,7 +17,7 @@ const UserApplications = () => {
     return (
         <div className='flex-grow overflow-y-auto  bg-[#020617]  p-4 flex flex-col gap-4 text-white' >
             {
-                userapplies[0]==null?<h1 className='flex justify-center'>apply for roles</h1>:
+                userapplies.length==0?<h1 className='flex justify-center'>apply for roles</h1>:
                 status === 'pending' ? <Spinner /> :
                     userapplies?.map(x => {
                         return <div key={x._id} className='flex overflow-hidden overflow-x-auto   justify-between bg-gray-800 p-6 rounded-xl'>

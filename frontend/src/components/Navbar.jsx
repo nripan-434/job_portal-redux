@@ -15,7 +15,8 @@ const Navbar = () => {
 }, [user, navigate])
   const dispatch = useDispatch()
   return (
-    <div className='h-20    bg-[#020617] '>
+    <div className='h-20 fixed top-0 left-0 w-full z-50 bg-[#020617]'>
+
       <div className='  border-b  w-full h-full  flex items-center text-white    '>
         <div className={user ? '  p-3 backdrop-blur-md  w-full h-full  flex justify-between items-center text-white' : ' p-4   w-full h-full  flex justify-between items-center text-white'}>
           {
@@ -26,9 +27,9 @@ const Navbar = () => {
             </div>
             </>
               :
-              <div className='cursor-pointer ' onClick={() => {
+              <div className='cursor-pointer font-[impact] text-gray-300  text-4xl ' onClick={() => {
                 user.admin == true ? navigate('/admin') : user.type == 'jobseeker' ? navigate('/home') : navigate('/employer')
-              }}>Home</div>
+              }}>UVZ.in</div>
           }
 
           {
@@ -54,9 +55,9 @@ const Navbar = () => {
 
                         </div></> : user.type == 'jobseeker' ? <><div className='flex gap-3'>
                           <div className='flex gap-3'>
-                            <Link to={'/home'}>userhome</Link>
-                            <Link>about</Link>
-                            <Link to={'/bookmarks'}>bookmarks</Link>
+                            <Link to={'/home'}>Home</Link>
+                            <Link to={'/bookmarks'}>Bookmarks</Link>
+                            <Link to={'/userapplications'}>Applications</Link>
                             <button onClick={() => {
                             dispatch(logout())
 
@@ -64,9 +65,10 @@ const Navbar = () => {
                           </div>
                         </div></> : <><div className='flex gap-3'>
                           <div className='flex gap-3'>
-                            <Link>employerhome</Link>
-                            <Link>about</Link>
-                            <button onClick={() => {
+                            <Link   className='hover:scale-105 duration-100' to={'/employer'}>Home</Link>
+                            <Link   className='hover:scale-105 duration-100' to={'/jobapplicantions'}>Posted Jobs</Link>
+                            <Link   className='hover:scale-105 duration-100' to={'/jobregister'}>Post Job</Link>
+                            <button className='hover:scale-105 duration-100'onClick={() => {
                             dispatch(logout())
 
                             }}>logout</button>
@@ -87,7 +89,7 @@ const Navbar = () => {
                           initial={{height:0}}
                           animate={{height:'auto'}}
                           exit={{height:0}}
-                          transition={{duration:0.3}} className={menu ? 'z-50 sm:hidden fixed top-20 overflow-hidden shadow-xl  bg-gray-500 right-0 w-full ' : 'hidden'}>
+                          transition={{duration:0.3}} className={menu ? ' sm:hidden  fixed top-20 left-0 overflow-hidden shadow-xl  bg-gray-500 right-0 w-full ' : 'hidden'}>
 
                   {
                     user.admin == true ?
@@ -103,17 +105,20 @@ const Navbar = () => {
                         </div></> : user.type == 'jobseeker' ? <>
                           <div
                            className='flex flex-col  '>
-                            <Link to={'/home'} className='hover:bg-white duration-300  hover:text-black p-4'>userhome</Link>
-                            <Link className='hover:bg-white duration-300   hover:text-black p-4'>about</Link>
-                            <Link className='cursor-pointer hover:bg-red-700 duration-300  hover:text-white p-4' onClick={() => {
+                            <Link onClick={()=>{setMenu(false)}}  className='hover:bg-white duration-300 hover:text-black p-4' to={'/home'}>Home</Link>
+                            <Link onClick={()=>{setMenu(false)}}  className='hover:bg-white duration-300 hover:text-black p-4' to={'/bookmarks'}>Bookmarks</Link>
+                            <Link onClick={()=>{setMenu(false)}}  className='hover:bg-white duration-300 hover:text-black p-4' to={'/userapplications'}>Applications</Link>
+                            <Link   className='cursor-pointer hover:bg-red-700 duration-300  hover:text-white p-4'  
+                            onClick={() => {
                               setMenu(false)
                             dispatch(logout())
 
                             }}>logout</Link>
                         </div></> : <>
                           <div className='flex flex-col'  >
-                            <Link className='hover:bg-white duration-300 hover:text-black p-4'>employerhome</Link>
-                            <Link className='hover:bg-white duration-300 hover:text-black p-4'>about</Link>
+                            <Link   onClick={()=>{setMenu(false)}}  className='hover:bg-white duration-300 hover:text-black p-4' to={'/employer'}>Home</Link>
+                            <Link  onClick={()=>{setMenu(false)}}  className='hover:bg-white duration-300 hover:text-black p-4' to={'/jobapplicantions'}>Posted Jobs</Link>
+                            <Link   onClick={()=>{setMenu(false)}}  className='hover:bg-white duration-300 hover:text-black p-4' to={'/jobregister'}>Post Job</Link>
                             <Link className='cursor-pointer hover:bg-red-700 duration-300 hover:text-white p-4' onClick={() => {
                               setMenu(false)
                             dispatch(logout())

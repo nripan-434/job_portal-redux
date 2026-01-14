@@ -54,7 +54,7 @@ const Userhome = () => {
           jobsearchs && jobsearchs.length > 0 ?
             <>
               <h1 className=' underline text-[25px] p-3'>results on <span className='text-blue-500 italic'>"{searchword}"</span></h1>
-              <JobCards jobs={jobsearchs} />
+              <JobCards jobs={jobsearchs} joblist={getalljob} />
             </> : emptyres ? <h1 className='text-white flex justify-center p-4 text-xl '>no results found on <span className='italic underline'>"{emptyres}"</span> </h1> : ''
       }
       </div>
@@ -73,9 +73,9 @@ const Userhome = () => {
       <div className='p-5'>
       { 
       option=='alljobs'?
-      <JobCards jobs={jobs} />:
+      <JobCards jobs={jobs} joblist={getalljob}/>:
       option=='lastest'&& latestjobs.length>0?
-      <JobCards jobs={latestjobs}/>:''
+      <JobCards jobs={latestjobs} joblist={getalljob}/>:''
       }
       </div>
 

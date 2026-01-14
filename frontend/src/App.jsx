@@ -24,8 +24,8 @@ const App = () => {
     <div className="flex flex-col min-h-screen">
       <Toaster/>
       <Navbar/>
-
-        <Routes >      
+      <div className="pt-20 bg-[#020617] min-h-screen">
+         <Routes >      
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/home' element={<Userprotected><Userhome/></Userprotected> }/>
@@ -40,6 +40,8 @@ const App = () => {
         <Route path='/userapplications' element={<UserApplications/>}/>
         <Route path='/reapply/:appid/:jobid' element={<Reapply/>}/>
       </Routes>
+      </div>
+       
     
       
       <Footer/>

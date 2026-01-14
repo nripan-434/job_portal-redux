@@ -1,3 +1,4 @@
+import ApplicationModel from "../models/ApplicationModel.js";
 import jobModel from "../models/jobModel.js";
 export const addjob = async (req, res) => {
     const { companyname, jobdetails, location, jobtitle, salary, jobtype, employer } = req.body
@@ -31,6 +32,7 @@ export const getalljobs = async (req, res) => {
 }
 export const getallbookmarks = async (req, res) => {
     const bookmarkjobs = await jobModel.find({bookmark:true})
+    
     res.json({ bookmarkjobs })
 }
 export const getlatestjob = async (req, res) => {
@@ -72,6 +74,7 @@ export const removejob=async(req,res)=>{
     const {jobid} = req.params
     const deleted = await jobModel.findByIdAndDelete({_id:jobid})
     if(deleted){
+        await ApplicationModel.deleteMany({ job: jobid });
         return res.json({message:'job removed'})
     }
     else{
