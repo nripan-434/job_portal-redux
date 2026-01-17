@@ -1,6 +1,11 @@
 import userModel from "../models/userModel.js"
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
+import dotenv from 'dotenv'
+
+
+
+dotenv.config()
 
 export const  registeruser =async(req,res)=>{
     const {name,email,password,admin,type}=req.body
@@ -42,7 +47,7 @@ export const loginuser = async(req,res)=>{
         return res.json({error:"invalid credentials"})
 
     }
-    const token =jwt.sign({id:user._id,name:user.name},'secret')
+    const token =jwt.sign({id:user._id,name:user.name},process.env.SECRET_KEY)
     if(user.role=='true'){
 
     }

@@ -14,8 +14,8 @@ const Applications = () => {
     console.log(jobid)
   },[])
   const [form, setform] = useState({
-    user: user.id,
-    job: jobid,
+    user:user? user.id:'',
+    job: jobid?jobid:'',
     email: '',
     address: '',
     contact: '',

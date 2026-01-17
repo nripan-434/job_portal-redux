@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
+import API from "../api/axiosInstance";
 const initialState = {
     user: JSON.parse(localStorage.getItem('user')) || null,
     token: JSON.parse(localStorage.getItem('token')) || null,
@@ -33,12 +34,15 @@ const AuthSlice = createSlice({
     initialState,
     reducers: {
         logout: (state) => {
-            state.user = null;
+            if(state.user && state.token){
+                state.user = null;
             state.token = null;
             state.error=null;
             state.status='idle';
             localStorage.removeItem('user');
             localStorage.removeItem('token');
+            }
+            
         }
     },
     extraReducers(builder) {

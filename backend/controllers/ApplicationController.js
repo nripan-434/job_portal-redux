@@ -2,6 +2,7 @@ import ApplicationModel from "../models/ApplicationModel.js";
 import jobModel from "../models/jobModel.js";
 
 
+
 export const applicationreg = async (req, res) => {
     const { user, job, email, address, contact, message } = req.body
     if (!user || !job || !email || !address || !contact || !message) {

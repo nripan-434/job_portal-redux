@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import API from "../api/axiosInstance";
 
 const State = {
     jobs: JSON.parse(localStorage.getItem('jobs')) || [],
@@ -15,43 +15,43 @@ const State = {
 }
 
 export const jobreg = createAsyncThunk('post/jobreg', async (form) => {
-    const res = await axios.post('http://localhost:5000/job/jobreg', form)
+    const res = await API.post('/job/jobreg', form)
     return res.data
 })
 export const getalljob = createAsyncThunk('get/getalljob', async () => {
-    const res = await axios.get('http://localhost:5000/job/getalljobs')
+    const res = await API.get('http://localhost:5000/job/getalljobs')
     return res.data.jobs
 
 })
 export const getallbookmarks = createAsyncThunk('get/getallbookmarks', async () => {
-    const res = await axios.get('http://localhost:5000/job/getallbookmarks')
+    const res = await API.get('http://localhost:5000/job/getallbookmarks')
     return res.data.bookmarkjobs
 
 })
 export const getlatestjob = createAsyncThunk('get/getlatestjob', async () => {
-    const res = await axios.get('http://localhost:5000/job/getlatestjob')
+    const res = await API.get('http://localhost:5000/job/getlatestjob')
 
     return res.data.latestjobs
 
 })
 export const getjobapplications = createAsyncThunk('get/getjobapplications', async (userid) => {
-    const res = await axios.get(`http://localhost:5000/job/getjobapplications/${userid}`)
+    const res = await API.get(`/job/getjobapplications/${userid}`)
     return res.data.jobapplications
 })
 export const jobsearch = createAsyncThunk('get/jobsearch', async (search) => {
-    const res = await axios.get('http://localhost:5000/job/jobsearch', { params: { search: search } })
+    const res = await API.get('/job/jobsearch', { params: { search: search } })
     return res.data
 })
 export const addtobookmark = createAsyncThunk('patch/addtobookmark', async ({ jobid }) => {
-    const res = await axios.patch(`http://localhost:5000/job/addtobookmark/${jobid}`)
+    const res = await API.patch(`/job/addtobookmark/${jobid}`)
     return res.data
 })
 export const removebookmark = createAsyncThunk('patch/removebookmark', async ({ jobid }) => {
-    const res = await axios.patch(`http://localhost:5000/job/removebookmark/${jobid}`)
+    const res = await API.patch(`/job/removebookmark/${jobid}`)
     return res.data
 })
 export const removejob = createAsyncThunk('delete/removejob', async ( jobid) => {
-    const res = await axios.delete(`http://localhost:5000/job/removejob/${jobid}`)
+    const res = await API.delete(`/job/removejob/${jobid}`)
     return res.data
 })
 

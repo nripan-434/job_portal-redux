@@ -6,6 +6,9 @@ import { jobreg } from '../../features/JobSlice'
 const Jobregister = () => {
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch()
+    if (!user) {
+  return null;
+}
     const [form, setForm] = useState({
         companyname: '',
         jobtitle: '',
