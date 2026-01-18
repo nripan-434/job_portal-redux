@@ -1,4 +1,4 @@
-# Job Portal Redux
+# Job Portal 
 
 ## 📌 Overview
 Job Portal Redux is a full-stack MERN job portal application that connects job seekers, recruiters, and administrators on a single platform.
