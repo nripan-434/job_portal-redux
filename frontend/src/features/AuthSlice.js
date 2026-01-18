@@ -3,8 +3,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import API from "../api/axiosInstance";
 const initialState = {
-    user: JSON.parse(localStorage.getItem('user')) || null,
-    token: JSON.parse(localStorage.getItem('token')) || null,
+    user: JSON.parse(sessionStorage.getItem('user')) || null,
+    token: JSON.parse(sessionStorage.getItem('token')) || null,
     status: 'success',
     error: null
 
@@ -39,8 +39,8 @@ const AuthSlice = createSlice({
             state.token = null;
             state.error=null;
             state.status='idle';
-            localStorage.removeItem('user');
-            localStorage.removeItem('token');
+            sessionStorage.removeItem('user');
+            sessionStorage.removeItem('token');
             }
             
         }
@@ -61,8 +61,8 @@ const AuthSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.user = action.payload.currentuser;
                 state.token = action.payload.token
-                localStorage.setItem('user', JSON.stringify(action.payload.currentuser))
-                localStorage.setItem('token', JSON.stringify(action.payload.token))
+                sessionStorage.setItem('user', JSON.stringify(action.payload.currentuser))
+                sessionStorage.setItem('token', JSON.stringify(action.payload.token))
             })
             .addCase(login.rejected, (state,action) => {
                 state.status = 'failed';

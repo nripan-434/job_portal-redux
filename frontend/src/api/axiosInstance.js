@@ -7,7 +7,8 @@ const API = axios.create({
 })
 
 API.interceptors.request.use((config)=>{
-    const token=localStorage.getItem('token')
+    const token=JSON.parse(sessionStorage.getItem('token'))
+
     if(token){
     config.headers.Authorization=`Bearer ${token}`
 
@@ -22,8 +23,8 @@ API.interceptors.response.use(
             
                 
                     toast.error(error.response.data.error)
-                localStorage.removeItem('token')
-                localStorage.removeItem('user')
+                sessionStorage.removeItem('token')
+                sessionStorage.removeItem('user')
                 
                 
              
