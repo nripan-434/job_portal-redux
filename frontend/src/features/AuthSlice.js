@@ -10,7 +10,7 @@ const initialState = {
 
 }
 export const reg = createAsyncThunk('post/postreg', async (form) => {
-    const res = await axios.post('http://localhost:5000/users/register', form)
+    const res = await API.post('/users/register', form)
     if (res.data.message) {
         toast.success(res.data.message)
     }
@@ -20,7 +20,7 @@ export const reg = createAsyncThunk('post/postreg', async (form) => {
 
 })
 export const login = createAsyncThunk('post/login', async (form) => {
-    const res = await axios.post('http://localhost:5000/users/login', form)
+    const res = await API.post('/users/login', form)
 
     if (res.data.error) {
         toast.error(res.data.error)
