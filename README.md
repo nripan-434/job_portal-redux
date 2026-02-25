@@ -1,5 +1,5 @@
 # Job Portal 
-
+Live: https://job-portal-redux-eosin.vercel.app/
 ## 📌 Overview
 Job Portal Redux is a full-stack MERN job portal application that connects job seekers, recruiters, and administrators on a single platform.
 The application uses JWT-based authentication, Redux Toolkit for state management, and role-based route protection on both frontend and backend to ensure secure access and proper authorization.
