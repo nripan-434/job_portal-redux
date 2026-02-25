@@ -15,7 +15,7 @@ import Applicants from './pages/employer/Applicants'
 import UserApplications from './pages/user/UserApplications'
 import Footer from './components/Footer'
 import Reapply from './pages/user/Reapply'
-import { Userprotected } from './components/userProtected'
+import { Userprotected } from './components/Userprotected'
 import { Jobproviderprotected } from './components/Jobproviderprotected'
 import Bookmarks from './pages/user/Bookmarks'
 const App = () => {
