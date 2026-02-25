@@ -3,7 +3,7 @@ import toast from 'react-hot-toast'
 
 
 const API = axios.create({
-    baseURL:'http://localhost:5000',
+    baseURL:'https://job-portal-redux.onrender.com',
 })
 
 API.interceptors.request.use((config)=>{
