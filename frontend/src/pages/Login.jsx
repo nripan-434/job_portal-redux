@@ -39,7 +39,7 @@ const Login = () => {
 
 
   return (
-    <div className='flex-grow overflow-y-auto p-8 flex justify-center items-center bg-[#020617] '>
+    <div className='flex-grow h-screen overflow-y-auto p-8 flex justify-center items-center bg-[#020617] '>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

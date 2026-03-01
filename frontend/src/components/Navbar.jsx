@@ -2,39 +2,36 @@ import React, { useState ,useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { logout } from '../features/AuthSlice'
+import logo from '../assets/images/logo.png'
 
 import { AnimatePresence, motion } from 'framer-motion';
 const Navbar = () => {
   const navigate = useNavigate()
   const { user } = useSelector(state => state.auth)
   const [menu, setMenu] = useState(false)
-  useEffect(() => {
-  if (!user) {
-    navigate('/')
-  }
-}, [user, navigate])
+ 
   const dispatch = useDispatch()
   return (
-    <div className='h-20 fixed top-0 left-0 w-full z-50 bg-[#020617]'>
+    <div className='h-20 fixed top-0 left-0 w-full z-50 backdrop-blur-md'>
 
       <div className='  border-b  w-full h-full  flex items-center text-white    '>
-        <div className={user ? '  p-3 backdrop-blur-md  w-full h-full  flex justify-between items-center text-white' : ' p-4   w-full h-full  flex justify-between items-center text-white'}>
+        <div className={user ? '  p-3 backdrop-blur-md  w-full h-full  flex justify-between items-center text-white' : ' p-25   w-full h-full  flex justify-between items-center text-white'}>
           {
             !user ? <><div >
-              <button className=' font-[impact] text-gray-300  text-4xl ' onClick={() => {
+              <button className=' font-[impact] text-gray-300 cursor-pointer  text-4xl ' onClick={() => {
                 navigate('/')
-              }}>UVZ.in</button>
+              }}><img className='h-13' src={logo} alt="" /></button>
             </div>
             </>
               :
               <div className='cursor-pointer font-[impact] text-gray-300  text-4xl ' onClick={() => {
                 user.admin == true ? navigate('/admin') : user.type == 'jobseeker' ? navigate('/home') : navigate('/employer')
-              }}>UVZ.in</div>
+              }}> <img src={logo} className='h-13' alt="" /> </div>
           }
 
           {
             !user ? <div className='flex justify-center items-center'>
-              <Link className='' to={'/login'}>sign in</Link>
+              <Link className='cursor:pointer  items-center flex hover:underline text-[19px] font-bold duration-300 p-3 active:scale-94' to={'/login'}>Sign in</Link>
             </div> :
               <div>
 
