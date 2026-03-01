@@ -19,17 +19,17 @@ export const jobreg = createAsyncThunk('post/jobreg', async (form) => {
     return res.data
 })
 export const getalljob = createAsyncThunk('get/getalljob', async () => {
-    const res = await API.get('http://localhost:5000/job/getalljobs')
+    const res = await API.get('/job/getalljobs')
     return res.data.jobs
 
 })
 export const getallbookmarks = createAsyncThunk('get/getallbookmarks', async () => {
-    const res = await API.get('http://localhost:5000/job/getallbookmarks')
+    const res = await API.get('/job/getallbookmarks')
     return res.data.bookmarkjobs
 
 })
 export const getlatestjob = createAsyncThunk('get/getlatestjob', async () => {
-    const res = await API.get('http://localhost:5000/job/getlatestjob')
+    const res = await API.get('/job/getlatestjob')
 
     return res.data.latestjobs
 
