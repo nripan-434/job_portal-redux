@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { clearjobsearch, getalljob, jobsearch } from '../features/JobSlice'
 import { motion } from "framer-motion"
 import vid from '../assets/video/landingvid.mp4'
+import { useRef } from 'react'
 
 import React from 'react'
 import { FaSpinner } from 'react-icons/fa6'
@@ -13,6 +14,7 @@ import Spinner from '../components/Spinner'
 import LandingJobcards from '../components/LandingJobcards'
 import { useNavigate } from 'react-router-dom'
 const Landing = () => {
+  const jobSection =useRef(null)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { jobs, jobsearchs, status, searchword, emptyres } = useSelector((state) => state.job)
@@ -28,6 +30,12 @@ const Landing = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     dispatch(jobsearch(search))
+    if(jobSection.current){
+      jobSection.current.scrollIntoView({
+        behavior:'smooth',
+        block:'start'
+      })
+    }
   }
   return (
     <div className='text-white  bg-[#020617]  flex-grow overflow-y-auto'>
@@ -82,20 +90,31 @@ const Landing = () => {
         </div>
 
         <div>
-          
-        </div>
-
-
-      </div >
-      <div className={`  text-white  `}>{
+           <div  className={`  text-white  `}>{
             status === 'pending' ? '' :
               jobsearchs && jobsearchs.length > 0 ?
                 <>
                   <h1 className=' underline text-[25px] p-3'>results on <span className='text-blue-500 italic'>"{searchword}"</span></h1>
-                  <LandingJobcards jobs={jobsearchs} />
+                  <div></div>
+
                 </> : emptyres ? <h1 className='text-white flex ml-8 p-4 text-xl '>no results found on <span className='italic underline'>"{emptyres}"</span> </h1> : ''
           }
           </div>
+        </div>
+
+
+      </div >
+       <div  className={`  text-white  `}>{
+            status === 'pending' ? '' :
+              jobsearchs && jobsearchs.length > 0 ?
+                <>
+                  <div></div>
+                  <LandingJobcards jobs={jobsearchs} />
+
+                </> :  ''
+          }
+          </div>
+      
       <LandingJobcards jobs={jobs} />
 
       <motion.div
