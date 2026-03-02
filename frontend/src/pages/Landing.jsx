@@ -82,7 +82,12 @@ const Landing = () => {
         </div>
 
         <div>
-          <div className={`  text-white  `}>{
+          
+        </div>
+
+
+      </div >
+      <div className={`  text-white  `}>{
             status === 'pending' ? '' :
               jobsearchs && jobsearchs.length > 0 ?
                 <>
@@ -91,10 +96,6 @@ const Landing = () => {
                 </> : emptyres ? <h1 className='text-white flex ml-8 p-4 text-xl '>no results found on <span className='italic underline'>"{emptyres}"</span> </h1> : ''
           }
           </div>
-        </div>
-
-
-      </div >
       <LandingJobcards jobs={jobs} />
 
       <motion.div
