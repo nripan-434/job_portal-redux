@@ -30,13 +30,16 @@ const Landing = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     dispatch(jobsearch(search))
-    if(jobSection.current){
+    
+  }
+  useEffect(() => {
+    if (jobsearchs && jobsearchs.length > 0 && jobSection.current) {
       jobSection.current.scrollIntoView({
-        behavior:'smooth',
-        block:'start'
+        behavior: 'smooth',
+        block: 'start'
       })
     }
-  }
+  }, [jobsearchs])
   return (
     <div className='text-white  bg-[#020617]  flex-grow overflow-y-auto'>
       <video
@@ -90,30 +93,24 @@ const Landing = () => {
         </div>
 
         <div>
-           <div  className={`  text-white  `}>{
+           <div  className={`  text-white `}>{
             status === 'pending' ? '' :
               jobsearchs && jobsearchs.length > 0 ?
-                <>
-                  <h1 className=' underline text-[25px] p-3'>results on <span className='text-blue-500 italic'>"{searchword}"</span></h1>
-                  <div></div>
-
-                </> : emptyres ? <h1 className='text-white flex ml-8 p-4 text-xl '>no results found on <span className='italic underline'>"{emptyres}"</span> </h1> : ''
+               '' : emptyres ? <h1 className='text-white  flex ml-8 p-4 text-xl gap-2 '>no results found on <span className='italic text-blue-300  underline'>"{emptyres}"</span> </h1> : ''
           }
           </div>
         </div>
 
 
       </div >
-       <div  className={`  text-white  `}>{
-            status === 'pending' ? '' :
-              jobsearchs && jobsearchs.length > 0 ?
-                <>
-                  <div></div>
-                  <LandingJobcards jobs={jobsearchs} />
-
-                </> :  ''
-          }
+      <div className='text-white'>
+        {status !== 'pending' && jobsearchs?.length > 0 && (
+          <div ref={jobSection} className='border-b scroll-mt-24'>
+                  <h1 className='  text-[25px] ml-5 p-3 flex gap-2'>results on  <span className='underline text-blue-300 italic'> "{searchword}"</span></h1>
+            <LandingJobcards jobs={jobsearchs} />
           </div>
+        )}
+      </div>
       
       <LandingJobcards jobs={jobs} />
 
