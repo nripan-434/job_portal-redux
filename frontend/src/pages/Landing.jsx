@@ -50,9 +50,9 @@ const Landing = () => {
         className=" z-0 opacity-40 w-full h-screen  max-w-none object-cover"
       >
         <source src={vid} type="video/mp4" />
-        Your browser does not support the video tag.
+       
       </video>
-      <div className=' absolute top-20 md:top-60 flex p-4 flex-col justify-center  '>
+      <div className=' absolute top-20 md:top-60 flex md:p-4 flex-col justify-center  '>
         <div className=' justify-between'>
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -60,9 +60,9 @@ const Landing = () => {
             transition={{ duration: 0.6 }}
             className=' ml-8  mb-8'>
 
-            <div className='text-white    font-[impact] text-[80px] flex bg-[url(https://www.pexels.com/download/video/3205619/)] items-center sm:text-[90px]'>
+            <div className='text-white mt-30 md:mt-0   font-[impact] text-[70px]  md:text-[80px]  flex bg-[url(https://www.pexels.com/download/video/3205619/)] items-center sm:text-[90px]'>
               Turn your skills into success.  </div>
-            <p className=' text-white  text-4xl duration-300 font-[impact]  '>Don’t wait for the perfect moment—create your next move today</p>
+            <p className=' text-white  md:text-4xl text-3xl duration-300 font-medium  '>Don’t wait for the perfect moment - create your next move today</p>
           </motion.div>
 
         </div>

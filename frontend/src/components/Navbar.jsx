@@ -15,7 +15,7 @@ const Navbar = () => {
     <div className='h-20 fixed top-0 left-0 w-full z-50 backdrop-blur-md'>
 
       <div className='  border-b  w-full h-full  flex items-center text-white    '>
-        <div className={user ? '  p-3 backdrop-blur-md  w-full h-full  flex justify-between items-center text-white' : ' p-25   w-full h-full  flex justify-between items-center text-white'}>
+        <div className={user ? '  p-3 backdrop-blur-md  w-full h-full  flex justify-between items-center text-white' : ' p-3   w-full h-full  flex justify-between items-center text-white'}>
           {
             !user ? <><div >
               <button className=' font-[impact] text-gray-300 cursor-pointer  text-4xl ' onClick={() => {

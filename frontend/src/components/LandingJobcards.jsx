@@ -21,36 +21,42 @@ const LandingJobcards = ({ jobs }) => {
                          hover:bg-gray-300 
                          overflow-hidden"
             >
-              {/* Bookmark  */}
               <Link to="/login">
                 <FaRegBookmark
                   className="absolute right-4 top-4 text-2xl cursor-pointer"
                 />
               </Link>
 
-              {/* Job Details */}
               <div className="flex flex-col gap-2 break-words">
+                <div className="flex gap-4 items-center">
+                   <div className="flex items-center justify-center w-12 h-12 bg-gray-600 text-white text-xl font-bold rounded-md mb-2">
+                  {job.companyname ? job.companyname.charAt(0).toUpperCase() : "?"}
+                </div>
+
                 <h1 className="text-2xl font-semibold group-hover:underline transition">
                   {job.companyname || "Unknown Company"}
                 </h1>
 
+                </div>
+               
+
                 <h2 className="text-lg">
-                  <span className="font-medium">Role:</span>{" "}
+                  <span className="font-medium">Role:</span>
                   {job.jobtitle || "Not specified"}
                 </h2>
 
                 <h2 className="text-lg">
-                  <span className="font-medium">Type:</span>{" "}
+                  <span className="font-medium">Type:</span>
                   {job.jobtype || "Not specified"}
                 </h2>
 
                 <h2 className="text-lg">
-                  <span className="font-medium">Package:</span>{" "}
+                  <span className="font-medium">Package:</span>
                   {job.salary || "Not disclosed"}
                 </h2>
 
                 <h2 className="text-lg">
-                  <span className="font-medium">Location:</span>{" "}
+                  <span className="font-medium">Location:</span>
                   {job.location || "Not specified"}
                 </h2>
 
@@ -64,7 +70,7 @@ const LandingJobcards = ({ jobs }) => {
 
               {/* Date  */}
               <div className="mt-4 text-sm text-gray-700">
-                Date:{" "}
+               Posted On:{" "}
                 {job.updatedAt
                   ? new Date(job.updatedAt).toLocaleDateString()
                   : "N/A"}
